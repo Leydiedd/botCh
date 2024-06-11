@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot🎀</title>
+    <style>
+        h1 {
+            color: rgb(255, 192, 203); 
+        }
+    </style>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <form id="textForm">
+        <label for="message">Escribe tu pregunta:</label><br>
+        <textarea id="message" name="message" rows="2" cols="30"></textarea><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        document.getElementById('textForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const message = document.getElementById('message').value;
+            sendMessage(message);
+            if (message.toLowerCase().includes("investigacion")) {
+                const additionalMessage = `Tipos de investigación:
+                1. Investigación etnográfica:
+                2. Investigación cualitativa:
+                3. Investigación evaluativa:
+                4. Investigación de mercado:
+                5. Investigación comparada:
+                6. Investigación participativa:
+                7. Investigación ex post facto :
+                8. Estudio de caso:
+                9. Investigación correlacional:
+                10. Investigación histórica:`;
+                sendMessage(additionalMessage);
+            }
+
+            if (message.toLowerCase().includes("enfoques")) {
+                const additionalMessage = `Tipos de Enfoques:
+                1. Enfoque cuantitativo:
+                2. Enfoque cualitativo:
+                3. Enfoque mixto:`;
+                sendMessage(additionalMessage);
+            }    
+        });
+
+        function sendMessage(message) {
+            const msg = new SpeechSynthesisUtterance(message);
+            msg.rate = 1; 
+            window.speechSynthesis.speak(msg);
+        }
+    </script>
+</body>
+</html>
